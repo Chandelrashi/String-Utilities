@@ -1,61 +1,26 @@
 def fun1(string):
-#Function to check if a string is a palindrome.
-
-    # Convert the string to lowercase and remove spaces
+    # Function to check if a string is a palindrome.
     string = string.lower().replace(" ", "")
-    
-    # Check if the reversed string is equal to the original string
     return string == string[::-1]
 
-#The below mentions is just for example for the code to check the accuracy of the code
-print(fun1("Mom"))  # True
-print(fun1("rashi"))  # False
-#True if the input string is a palindrome, False otherwise
-
-#################################################################################################################################################################################
-
 def fun2(string):
-#Function to find the most frequent letter or digit in a string.
-#(if any), or None if there are no letters or digits.
-    # Convert the string to lowercase
+    # Function to find the most frequent letter or digit in a string.
     string = string.lower()
-    
-    # Initialize a dictionary to store the count of each character
     char_count = {}
-    
-    # Iterate through each character in the string
     for char in string:
-        # Ignore characters that are neither letters nor digits
         if char.isalpha() or char.isdigit():
-            # Update the count of each character in the dictionary
             char_count[char] = char_count.get(char, 0) + 1
-    
-    # Check if there are any letters or digits in the string
     if len(char_count) == 0:
         return None
-    
-    # Find the character(s) with the maximum count
     max_count = max(char_count.values())
     most_frequent_chars = [char for char, count in char_count.items() if count == max_count]
-# Return any one of the most frequent characters
     return most_frequent_chars[0]
-#The below mentions is just for example for the code to check the accuracy of the code
-print(fun2("Hello World!"))  # 'l'
-print(fun2("56789"))  # '1'
-print(fun2("&&&"))  # None
-
-
-#####################################################################################################################################################################
-
 
 def fun3(string):
-    #Function to count the number of letters, spaces, and digits in a string.
-    # Initialize the count variables
+    # Function to count the number of letters, spaces, and digits in a string.
     letter_count = 0
     space_count = 0
     digit_count = 0
-    
-    # Iterate through each character in the string
     for char in string:
         if char.isalpha():
             letter_count += 1
@@ -63,9 +28,16 @@ def fun3(string):
             space_count += 1
         elif char.isdigit():
             digit_count += 1
-    
-    # Return the counts as a tuple
     return (letter_count, space_count, digit_count)
 
-#The below mentions is just for example for the code to check the accuracy of the code
-print(fun3("My name is Rashi"))  # (13, 3, 0)
+# Example usage
+if __name__ == "__main__":
+    print(fun1("Mom"))  # Output: True
+    print(fun1("rashi"))  # Output: False
+
+    print(fun2("Hello World!"))  # Output: 'l'
+    print(fun2("56789"))  # Output: '5'
+    print(fun2("&&&"))  # Output: None
+
+    print(fun3("My name is Rashi"))  # Output: (11, 3, 0)
+git add string_utilities.py
