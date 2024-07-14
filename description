@@ -1,6 +1,71 @@
-# String-Utilities
-This repository contains three Python functions designed to perform various string operations:  Palindrome Checker (fun1), Most Frequent Character Finder (fun2) and Character Counter (fun3).\
+def fun1(string):
+#Function to check if a string is a palindrome.
 
-Palindrome Checker (fun1): Checks if a given string is a palindrome. The function converts the string to lowercase and removes spaces before checking if the reversed string is equal to the original.
-Most Frequent Character Finder (fun2): Finds the most frequent letter or digit in a string. It ignores characters that are neither letters nor digits. If no letters or digits are found, it returns None
-Character Counter (fun3): Counts the number of letters, spaces, and digits in a string. It returns these counts as a tuple
+    # Convert the string to lowercase and remove spaces
+    string = string.lower().replace(" ", "")
+    
+    # Check if the reversed string is equal to the original string
+    return string == string[::-1]
+
+#The below mentions is just for example for the code to check the accuracy of the code
+print(fun1("Mom"))  # True
+print(fun1("rashi"))  # False
+#True if the input string is a palindrome, False otherwise
+
+#################################################################################################################################################################################
+
+def fun2(string):
+#Function to find the most frequent letter or digit in a string.
+#(if any), or None if there are no letters or digits.
+    # Convert the string to lowercase
+    string = string.lower()
+    
+    # Initialize a dictionary to store the count of each character
+    char_count = {}
+    
+    # Iterate through each character in the string
+    for char in string:
+        # Ignore characters that are neither letters nor digits
+        if char.isalpha() or char.isdigit():
+            # Update the count of each character in the dictionary
+            char_count[char] = char_count.get(char, 0) + 1
+    
+    # Check if there are any letters or digits in the string
+    if len(char_count) == 0:
+        return None
+    
+    # Find the character(s) with the maximum count
+    max_count = max(char_count.values())
+    most_frequent_chars = [char for char, count in char_count.items() if count == max_count]
+# Return any one of the most frequent characters
+    return most_frequent_chars[0]
+#The below mentions is just for example for the code to check the accuracy of the code
+print(fun2("Hello World!"))  # 'l'
+print(fun2("56789"))  # '1'
+print(fun2("&&&"))  # None
+
+
+#####################################################################################################################################################################
+
+
+def fun3(string):
+    #Function to count the number of letters, spaces, and digits in a string.
+    # Initialize the count variables
+    letter_count = 0
+    space_count = 0
+    digit_count = 0
+    
+    # Iterate through each character in the string
+    for char in string:
+        if char.isalpha():
+            letter_count += 1
+        elif char.isspace():
+            space_count += 1
+        elif char.isdigit():
+            digit_count += 1
+    
+    # Return the counts as a tuple
+    return (letter_count, space_count, digit_count)
+
+#The below mentions is just for example for the code to check the accuracy of the code
+print(fun3("My name is Rashi"))  # (13, 3, 0)
